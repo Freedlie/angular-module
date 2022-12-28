@@ -9,6 +9,20 @@ import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { CommentComponent } from './components/comment/comment.component';
+import {RouterModule, Routes} from "@angular/router";
+import { MainLoyoutComponent } from './layouts/main-loyout/main-loyout.component';
+import { HeaderComponent } from './components/header/header.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+
+let routes:Routes=[
+  {path:'', component: MainLoyoutComponent, children:[
+      {path: '', redirectTo:'users', pathMatch:'full'},
+      {path:'users', component: UsersComponent, children:[
+          {path:':id', component:UserDetailsComponent}
+        ]},
+      {path:'posts', component:PostsComponent}
+    ]}
+];
 
 @NgModule({
   declarations: [
@@ -18,11 +32,15 @@ import { CommentComponent } from './components/comment/comment.component';
     PostsComponent,
     PostComponent,
     CommentsComponent,
-    CommentComponent
+    CommentComponent,
+    MainLoyoutComponent,
+    HeaderComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
