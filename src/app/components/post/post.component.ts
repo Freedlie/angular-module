@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IPost} from "../../interfaces";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-post',
@@ -10,9 +11,19 @@ export class PostComponent implements OnInit {
   @Input()
   post: IPost;
 
-  constructor() { }
+  @Output()
+  LiftPost= new EventEmitter<IPost>()
+
+  constructor(private router:Router,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
+  Lift():void {
+    this.LiftPost.emit(this.post)
+  }
+
+  getPostDetails():void {
+    this.router.navigate([this.post.id],{relativeTo:this.activatedRoute, state:{post:this.post}})
+  }
 }

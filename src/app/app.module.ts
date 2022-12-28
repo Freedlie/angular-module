@@ -13,6 +13,8 @@ import {RouterModule, Routes} from "@angular/router";
 import { MainLoyoutComponent } from './layouts/main-loyout/main-loyout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { CommentDatailsComponent } from './components/comment-datails/comment-datails.component';
 
 let routes:Routes=[
   {path:'', component: MainLoyoutComponent, children:[
@@ -20,7 +22,12 @@ let routes:Routes=[
       {path:'users', component: UsersComponent, children:[
           {path:':id', component:UserDetailsComponent}
         ]},
-      {path:'posts', component:PostsComponent}
+      {path:'posts', component:PostsComponent,children:[
+          {path: ':id', component: PostDetailsComponent}
+        ]},
+      {path:'comments', component:CommentsComponent, children:[
+          {path: ':id', component: CommentDatailsComponent}
+        ]}
     ]}
 ];
 
@@ -35,7 +42,9 @@ let routes:Routes=[
     CommentComponent,
     MainLoyoutComponent,
     HeaderComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    PostDetailsComponent,
+    CommentDatailsComponent
   ],
   imports: [
     BrowserModule,
