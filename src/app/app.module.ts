@@ -6,12 +6,14 @@ import {HttpClientModule} from "@angular/common/http";
 import { CarsComponent } from './components/cars/cars.component';
 import { CarComponent } from './components/car/car.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
-    CarComponent
+    CarComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,2 @@
-<app-cars></app-cars>
+<app-form (formValue)="getFormValue($event)" [uCar]="uCar"></app-form>
+<app-cars [form]="formForCar" (updateCarForForm)="getUpdateCar($event)"></app-cars>

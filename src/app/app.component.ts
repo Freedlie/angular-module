@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {FormGroup} from "@angular/forms";
+import {ICar} from "./interfaces";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-module';
+
+  @Input()
+  formForCar:FormGroup
+
+  @Input()
+  uCar:ICar
+
+  getFormValue(form: FormGroup) {
+    this.formForCar = form;
+  }
+
+  getUpdateCar(car: ICar) {
+    this.uCar = car
+  }
 }
