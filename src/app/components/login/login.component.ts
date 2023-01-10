@@ -12,7 +12,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.dialog.open(LoginFormComponent,{
-      disableClose:true
+      disableClose:true,
+      hasBackdrop: false
     })
   }
 

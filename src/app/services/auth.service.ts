@@ -36,6 +36,10 @@ export class AuthService {
     return this._authUser.asObservable();
   }
 
+  register(user:IAuth):Observable<IAuth>{
+    return this.httpClient.post<IAuth>(urls.user.create, user)
+  }
+
   private _setTokens({refresh, access}:ITokens):void{
     localStorage.setItem(this._accessTokenKey, access)
     localStorage.setItem(this._refreshTokenKey, refresh)

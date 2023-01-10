@@ -11,6 +11,8 @@ export class CarComponent implements OnInit {
   @Input()
   car:ICar
 
+  panelOpenState: false;
+
   constructor() { }
 
   ngOnInit(): void {
